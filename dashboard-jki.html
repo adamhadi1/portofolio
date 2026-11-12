@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studi kasus Dashboard JKI</title>
+<meta name="description" content="Studi kasus Dashboard JKI, jadwal produksi dan daily report di TV pabrik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&amp;family=Inconsolata:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0b0c12;font-synthesis-weight:none}
+h1,h2,h3{font-family:'Elephant','Abril Fatface',Georgia,serif;letter-spacing:-.01em!important}
+a{color:#d4af37}a:hover{color:#e8cd72}
+@keyframes ahFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+@keyframes ahRun{to{transform:translateX(-50%)}}
+@keyframes ahFlash{from{background:rgba(212,175,55,.35)}to{background:transparent}}
+.ah-lift{transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.ah-lift:hover{transform:perspective(900px) rotateX(5deg) translateY(-4px);border-color:rgba(212,175,55,.5)!important}
+.ah-cb:focus-visible,.ah-btn:focus-visible{outline:2px solid #d4af37;outline-offset:3px}
+</style>
+<style>
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="dc-tpl">
+<div style="background: #0b0c12; color: #ecebe6; font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace">
+
+<div style="background: #0a1f44; color: #e8eefb; position: relative; overflow: hidden">
+<div style="position: relative; max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 24px 24px 72px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<a href="index.html" style="color: #e8eefb; text-decoration: none; font-weight: 700; font-size: 14px; padding: 12px 0">← Kembali ke portofolio</a>
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; color: #a9b8d6">PROJECT 3 / 3</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .12em; color: #d4af37">STUDI KASUS · OKT–NOV 2026</span>
+<h1 style="margin: 0; font-size: 60px; line-height: 1.02; font-weight: 800; letter-spacing: -.03em; color: #fff">Dashboard JKI</h1>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #cfdaf0; max-width: 520px">Sistem informasi lantai produksi untuk JVS Karya Indonesia: jadwal produksi dan daily report karyawan yang tampil langsung di TV pabrik, dikelola dari HP.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px; padding-top: 14px; border-top: 1px solid #23406f">
+<div style="display: flex; flex-direction: column"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #a9b8d6">PERUSAHAAN</span><span style="font-size: 15px; color: #fff">JVS Karya Indonesia · Two Nations Together</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #a9b8d6">PERAN</span><span style="font-size: 15px; color: #fff">Project lead · produk & implementasi</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #a9b8d6">PLATFORM</span><span style="font-size: 15px; color: #fff">Web · TV pabrik · HP</span></div>
+<div style="display: flex; flex-direction: column"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #a9b8d6">STACK</span><span style="font-size: 15px; color: #fff">Next.js · Supabase · Vercel</span></div>
+</div>
+</div>
+<div style="flex: 1.2 1 480px; min-width: 0; perspective: 1200px">
+<div style="background: #15171c; padding: 12px; border-radius: 16px; transform: rotateY(-12deg) rotateX(6deg); animation: ahFloat 7s ease-in-out infinite; box-shadow: 0 30px 60px rgba(0,0,0,.45)">
+<div style="aspect-ratio: 16 / 9; background: #0a1f44; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-bottom: 2px solid #d4af37"><span style="font-weight: 700; color: #fff; font-size: 14px">Master Production Schedule</span><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; color: #d4af37; font-size: 16px">09.30</span></div>
+<div style="flex: 1; padding: 4px 16px; display: flex; flex-direction: column; font-size: 12px">
+<div style="display: grid; grid-template-columns: 2.2fr repeat(4, minmax(0, 1fr)) 1.1fr; gap: 6px; padding: 6px 0; border-bottom: 1px solid #d4af37; color: #d4af37; font-size: 10px; font-weight: 600"><span>Project</span><span style="text-align: center">Filling</span><span style="text-align: center">Label</span><span style="text-align: center">Cukai</span><span style="text-align: center">Finish</span><span style="text-align: right">Status</span></div>
+<div style="display: grid; grid-template-columns: 2.2fr repeat(4, minmax(0, 1fr)) 1.1fr; gap: 6px; padding: 7px 0; border-bottom: 1px solid #1d3a6e; color: #8094bb"><span style="text-decoration: line-through">Produk A · 15 ML</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: right; font-size: 10px">Selesai</span></div>
+<div style="display: grid; grid-template-columns: 2.2fr repeat(4, minmax(0, 1fr)) 1.1fr; gap: 6px; padding: 7px 0; border-bottom: 1px solid #1d3a6e; color: #e8eefb"><span>Produk B · 30 ML</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #3a5687">○</span><span style="text-align: right; font-size: 10px; color: #d4af37">Finishing</span></div>
+<div style="display: grid; grid-template-columns: 2.2fr repeat(4, minmax(0, 1fr)) 1.1fr; gap: 6px; padding: 7px 0; color: #e8eefb"><span>Produk C · 15 ML</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #d4af37">●</span><span style="text-align: center; color: #3a5687">○</span><span style="text-align: center; color: #3a5687">○</span><span style="text-align: right; font-size: 10px; color: #d4af37">Cukai</span></div>
+</div>
+<div style="background: #d4af37; color: #0a1f44; padding: 6px 0; overflow: hidden; white-space: nowrap; font-size: 11px; font-weight: 700"><div style="display: inline-flex; gap: 48px; animation: ahRun 20s linear infinite"><span>Utamakan K3 — wajib pakai APD lengkap di area produksi</span><span>Briefing pagi pukul 08.00 di ruang produksi</span><span>Utamakan K3 — wajib pakai APD lengkap di area produksi</span><span>Briefing pagi pukul 08.00 di ruang produksi</span></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="background: #0f1d38">
+<div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))">
+<div style="padding: 30px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 36px; font-weight: 800; color: #d4af37">2 modul</span><span style="font-size: 14px; color: #cfdaf0">jadwal produksi & daily report dalam satu website</span></div>
+<div style="padding: 30px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 36px; font-weight: 800; color: #d4af37">1–2 detik</span><span style="font-size: 14px; color: #cfdaf0">perubahan admin muncul di TV tanpa refresh</span></div>
+<div style="padding: 30px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 36px; font-weight: 800; color: #d4af37">2 × 6</span><span style="font-size: 14px; color: #cfdaf0">dua pabrik dan enam divisi dalam satu rekap</span></div>
+<div style="padding: 30px 20px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 36px; font-weight: 800; color: #d4af37">Rp0</span><span style="font-size: 14px; color: #cfdaf0">biaya hosting, paket gratis Supabase & Vercel</span></div>
+</div>
+</div>
+
+<div style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 96px 24px; display: flex; flex-direction: column; gap: 96px">
+
+<section style="display: flex; flex-wrap: wrap; gap: 24px">
+<div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .16em; color: #d4af37">LATAR BELAKANG</span>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Informasi produksi ada, tapi tidak terlihat oleh yang membutuhkannya</h2>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; border: 1px solid rgba(255,255,255,.1); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; color: #e08a7e; letter-spacing: .1em">MASALAH</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55; color: #c9cad3">
+<li>Jadwal produksi hanya ada di spreadsheet, progres tidak terlihat di lantai produksi.</li>
+<li>Laporan harian 6 divisi di 2 pabrik belum punya satu tempat.</li>
+<li>Pengumuman K3 perlu media yang selalu terlihat.</li>
+</ul>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; border: 1px solid rgba(212,175,55,.4); background: rgba(212,175,55,.06); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 13px; font-weight: 700; color: #d4af37; letter-spacing: .1em">TUJUAN & BATASAN</span>
+<ul style="margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55; color: #c9cad3">
+<li>Satu layar TV tanpa login yang memperbarui diri sendiri.</li>
+<li>Semua pengelolaan cukup dari HP atau laptop.</li>
+<li>Tanpa biaya infrastruktur, hak akses per peran.</li>
+</ul>
+</div>
+</section>
+
+<section style="border: 1px solid rgba(212,175,55,.35); border-radius: 28px; padding: 40px; background: linear-gradient(160deg, #101a30, #0f1018); display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .16em; color: #d4af37">COBA SENDIRI · ADMIN → TV</span>
+<h2 style="margin: 0; font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Centang tahap di admin, lihat TV ikut berubah.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.7; color: #b4b6c4">Di sistem asli, perubahan dikirim lewat Supabase Realtime dalam 1–2 detik. Kalau koneksi putus, TV tetap memperbarui diri setiap 60 detik.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch">
+<div style="flex: 1 1 400px; min-width: 0; background: #fff; color: #0f1b33; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column">
+<div style="background: #0a1f44; color: #d4af37; padding: 12px 16px; font-weight: 700; font-size: 14px">Admin dashboard · HP</div>
+<div style="padding: 10px 16px 16px; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 1.8fr repeat(4, minmax(0, 1fr)); gap: 6px; font-size: 11px; font-weight: 600; color: #4a5670; padding: 8px 0; border-bottom: 1px solid #dfe5ef"><span>Project</span><span style="text-align: center">Fill</span><span style="text-align: center">Label</span><span style="text-align: center">Cukai</span><span style="text-align: center">Finish</span></div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 1.8fr repeat(4, minmax(0, 1fr)); gap: 6px; align-items: center; padding: 4px 0; border-bottom: 1px solid #eef1f6; font-size: 13px">
+<span>{{r.name}}</span>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="4">
+<div style="display: flex; justify-content: center"><button class="ah-cb" type="button" onClick="{{c.toggle}}" aria-label="{{c.label}}" aria-pressed="{{c.pressed}}" style="width: 44px; height: 44px; border: none; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><span style="width: 20px; height: 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #d4af37; font-size: 13px; font-weight: 800; {{c.box}}">{{c.mark}}</span></button></div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 1.2 1 440px; min-width: 0; background: #15171c; padding: 10px; border-radius: 14px; display: flex">
+<div style="flex: 1; background: #0a1f44; border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; color: #e8eefb">
+<div style="display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 2px solid #d4af37"><span style="font-weight: 700; font-size: 13px">Layar TV pabrik</span><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #d4af37">{{sync}}</span></div>
+<div style="padding: 6px 14px; display: flex; flex-direction: column; flex: 1">
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid #1d3a6e; font-size: 14px; {{r.flash}}">
+<span style="{{r.nameStyle}}">{{r.name}}</span>
+<span style="display: flex; gap: 6px; align-items: center">
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="4"><span style="width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid; box-sizing: border-box; {{c.dot}}"></span></sc-for>
+</span>
+<span style="min-width: 74px; text-align: right; font-size: 12px; color: #d4af37">{{r.status}}</span>
+</div>
+</sc-for>
+</div>
+<div style="background: #d4af37; color: #0a1f44; font-size: 11px; font-weight: 700; padding: 6px 14px">Utamakan K3 — wajib pakai APD lengkap</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .16em; color: #d4af37">DUA MODUL</span>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Dashboard produksi dan daily report dua peran</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px">
+<div class="ah-lift" style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 17px; font-weight: 700">TV realtime & auto-paging</span><span style="font-size: 14px; color: #b4b6c4; line-height: 1.6">Lima tahap produksi, project selesai dicoret, halaman berganti setiap 10 detik.</span></div>
+<div class="ah-lift" style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 17px; font-weight: 700">Admin satu akun</span><span style="font-size: 14px; color: #b4b6c4; line-height: 1.6">Tambah, edit, hapus project, urutan manual, dan running text yang bisa diaktifkan.</span></div>
+<div class="ah-lift" style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 17px; font-weight: 700">Staf / PIC</span><span style="font-size: 14px; color: #b4b6c4; line-height: 1.6">Form terisi otomatis, pilih Hari ini/Cuti/Sakit/Izin, dibuka 08.00–17.30 WIB.</span></div>
+<div class="ah-lift" style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px"><span style="font-size: 17px; font-weight: 700">Supervisor / Rekap</span><span style="font-size: 14px; color: #b4b6c4; line-height: 1.6">Filter periode, pabrik, divisi; Confirm, Edit, Delete; mengatur filter yang tampil di TV.</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 720px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .16em; color: #d4af37">ARSITEKTUR</span>
+<h2 style="margin: 0; font-size: 38px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Sederhana, gratis, dan aman per peran</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px">
+<div style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #8a8c9c">KLIEN</span><span style="font-weight: 700">TV pabrik · HP · laptop</span><span style="font-size: 13px; color: #b4b6c4">TV tanpa login, hanya baca</span></div>
+<div style="border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #8a8c9c">VERCEL</span><span style="font-weight: 700">Next.js</span><span style="font-size: 13px; color: #b4b6c4">Deploy otomatis dari GitHub</span></div>
+<div style="border-radius: 18px; padding: 20px; background: #12305f; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px; color: #a9b8d6">SUPABASE</span><span style="font-weight: 700">Auth · Postgres · Realtime</span><span style="font-size: 13px; color: #cfdaf0">Login per peran, push ke TV</span></div>
+<div style="border-radius: 18px; padding: 20px; background: #d4af37; color: #0a1f44; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 11px">ATURAN AKSES</span><span style="font-weight: 700">Row Level Security</span><span style="font-size: 13px">Staf hanya membaca report sendiri</span></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 20px">
+<span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 13px; letter-spacing: .16em; color: #d4af37">PROSES · DESAIN DISETUJUI DULU, BARU DIBANGUN</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px">
+<div style="border-top: 2px solid #d4af37; padding-top: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #8a8c9c">01</span><span style="font-weight: 700">Brief & klarifikasi</span></div>
+<div style="border-top: 2px solid #d4af37; padding-top: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #8a8c9c">02</span><span style="font-weight: 700">Mockup visual</span></div>
+<div style="border-top: 2px solid #d4af37; padding-top: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #8a8c9c">03</span><span style="font-weight: 700">Prototipe UI/UX</span></div>
+<div style="border-top: 2px solid #d4af37; padding-top: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #8a8c9c">04</span><span style="font-weight: 700">Implementasi bertahap</span></div>
+<div style="border-top: 2px solid #d4af37; padding-top: 14px; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Consolas', 'Inconsolata', ui-monospace, monospace; font-size: 12px; color: #8a8c9c">05</span><span style="font-weight: 700">Deploy & pasang di TV</span></div>
+</div>
+<div style="border: 1px solid rgba(212,175,55,.35); background: rgba(212,175,55,.06); border-radius: 18px; padding: 22px; font-size: 15px; line-height: 1.65; color: #c9cad3">Pelajaran: mockup sebelum kode menghemat banyak revisi. Alur dua peran berubah beberapa kali di tahap desain, bukan di kode. Aturan seperti batas jam harus dijaga di server agar tidak bisa diakali.</div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,.08)">
+<a href="pointmuvapor.html" style="color: #b4b6c4; text-decoration: none; font-size: 15px; padding: 12px 0">← PointMuVapor</a>
+<a class="ah-btn" href="index.html" style="display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 26px; border-radius: 999px; background: #ecebe6; color: #0b0c12; text-decoration: none; font-weight: 800; font-size: 15px">Kembali ke portofolio →</a>
+</div>
+</div>
+</div>
+</template>
+<script>
+/* Tiny renderer: fills the page template from the Component's values and
+   updates the page in place whenever its state changes. */
+class DCLogic {
+  constructor(props) { this.props = props || {}; this.state = {}; }
+  setState(patch) {
+    Object.assign(this.state, typeof patch === 'function' ? patch(this.state) : patch);
+    if (this.__render) this.__render();
+  }
+  forceUpdate() { if (this.__render) this.__render(); }
+}
+const DC = (function () {
+  const WHOLE = /^\s*\{\{\s*([\w$.]+)\s*\}\}\s*$/;
+  const PART = /\{\{\s*([\w$.]+)\s*\}\}/g;
+  function look(scope, path) {
+    if (path === 'true') return true;
+    if (path === 'false') return false;
+    let v = scope;
+    for (const k of path.split('.')) { if (v == null) return undefined; v = v[k]; }
+    return v;
+  }
+  function fill(str, scope) {
+    return str.replace(PART, (m, p) => { const v = look(scope, p); return v == null ? '' : String(v); });
+  }
+  function build(node, scope, out) {
+    if (node.nodeType === 3) { out.appendChild(document.createTextNode(fill(node.data, scope))); return; }
+    if (node.nodeType !== 1) return;
+    const tag = node.localName;
+    if (tag === 'sc-for') {
+      const m = WHOLE.exec(node.getAttribute('list') || '');
+      const list = (m && look(scope, m[1])) || [];
+      const as = node.getAttribute('as') || 'item';
+      list.forEach((item, i) => {
+        const s = Object.create(scope); s[as] = item; s.$index = i;
+        node.childNodes.forEach((c) => build(c, s, out));
+      });
+      return;
+    }
+    if (tag === 'sc-if') {
+      const m = WHOLE.exec(node.getAttribute('value') || '');
+      if (m && look(scope, m[1])) node.childNodes.forEach((c) => build(c, scope, out));
+      return;
+    }
+    const el = node.cloneNode(false);
+    el.__ev = {};
+    for (const a of Array.from(node.attributes)) {
+      const whole = WHOLE.exec(a.value);
+      if (a.name.startsWith('hint-')) { el.removeAttribute(a.name); continue; }
+      if (a.name.startsWith('on') && whole) {
+        el.removeAttribute(a.name);
+        const fn = look(scope, whole[1]);
+        if (typeof fn === 'function') el.__ev[a.name.slice(2)] = fn;
+        continue;
+      }
+      if (whole) {
+        const v = look(scope, whole[1]);
+        if (v === false || v == null) el.removeAttribute(a.name);
+        else el.setAttribute(a.name, v === true ? '' : String(v));
+      } else if (a.value.indexOf('{{') >= 0) {
+        el.setAttribute(a.name, fill(a.value, scope));
+      }
+    }
+    node.childNodes.forEach((c) => build(c, scope, el));
+    out.appendChild(el);
+  }
+  function bind(el) {
+    if (el.nodeType !== 1) return;
+    for (const k in (el.__ev || {})) el['on' + k] = el.__ev[k];
+    el.childNodes.forEach(bind);
+  }
+  function morph(a, b) {
+    if (a.nodeType !== b.nodeType || a.nodeName !== b.nodeName) { bind(b); a.replaceWith(b); return; }
+    if (a.nodeType === 3) { if (a.data !== b.data) a.data = b.data; return; }
+    if (a.nodeType !== 1) return;
+    for (const at of Array.from(a.attributes)) if (!b.hasAttribute(at.name)) a.removeAttribute(at.name);
+    for (const at of Array.from(b.attributes)) if (a.getAttribute(at.name) !== at.value) a.setAttribute(at.name, at.value);
+    const oldEv = a.__ev || {}, newEv = b.__ev || {};
+    for (const k in oldEv) if (!(k in newEv)) a['on' + k] = null;
+    for (const k in newEv) a['on' + k] = newEv[k];
+    a.__ev = newEv;
+    const ac = Array.from(a.childNodes), bc = Array.from(b.childNodes);
+    const n = Math.min(ac.length, bc.length);
+    for (let i = 0; i < n; i++) morph(ac[i], bc[i]);
+    for (let i = n; i < ac.length; i++) ac[i].remove();
+    for (let i = n; i < bc.length; i++) { bind(bc[i]); a.appendChild(bc[i]); }
+  }
+  function mount(Component) {
+    const tpl = document.getElementById('dc-tpl').content;
+    const root = document.getElementById('app');
+    const inst = new Component({});
+    let busy = false, again = false;
+    const render = () => {
+      if (busy) { again = true; return; }
+      busy = true;
+      const next = document.createElement('div');
+      next.id = 'app';
+      tpl.childNodes.forEach((c) => build(c, inst.renderVals(), next));
+      morph(root, next);
+      busy = false;
+      if (again) { again = false; render(); }
+    };
+    render();
+    inst.__render = render;
+    if (inst.componentDidMount) inst.componentDidMount();
+    window.addEventListener('pagehide', () => { if (inst.componentWillUnmount) inst.componentWillUnmount(); });
+  }
+  return { mount };
+})();
+
+</script>
+<script>
+class Component extends DCLogic {
+  constructor(p){ super(p); this.state = { g: [[1,1,1,0],[1,1,0,0],[1,0,0,0]], last: -1, t: 0 }; }
+  renderVals() {
+    const names = ['Produk B · 30 ML', 'Produk C · 15 ML', 'Produk D · 60 ML'];
+    const stages = ['Filling', 'Labeling', 'Cukai', 'Finishing'];
+    const g = this.state.g;
+    const rows = names.map((name, r) => {
+      const done = g[r].every(Boolean);
+      const next = g[r].indexOf(0);
+      return {
+        name,
+        status: done ? 'Selesai' : next === 0 ? 'Antre' : stages[next],
+        nameStyle: done ? 'text-decoration: line-through; color: #8094bb;' : '',
+        flash: this.state.last === r ? 'animation: ahFlash 1.2s ease-out;' : '',
+        cells: g[r].map((on, c) => ({
+          label: name + ' ' + stages[c], pressed: on ? 'true' : 'false',
+          mark: on ? '✓' : '',
+          box: on ? 'background: #0a1f44;' : 'border: 1.5px solid #b8c3d8; background: #fff;',
+          dot: on ? 'background: #d4af37; border-color: #d4af37;' : 'border-color: #3a5687;',
+          toggle: () => {
+            const n = g.map((x) => x.slice()); n[r][c] = on ? 0 : 1;
+            this.setState({ g: n, last: -1, t: this.state.t + 1 });
+            setTimeout(() => this.setState({ last: r }), 30);
+          }
+        }))
+      };
+    });
+    return { rows, sync: this.state.t ? 'tersinkron · baru saja' : '09.30' };
+  }
+}
+DC.mount(Component);
+</script>
+</body>
+</html>
